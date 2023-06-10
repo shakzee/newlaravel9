@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Home;
+use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{user}', function ($id) {
-    return view('welcome',['data'=>$id]);
-})->name('root');
 
- Route::get('/home',[Home::class,'aboutus']);
+Route::get('/',[User::class,'index']);
+Route::get('/users/{user}', [User::class, 'user'])->name('user');
+// Route::get('/{user}', function ($id) {
+//     return view('welcome',['data'=>$id]);
+// })->name('root');
 
-Route::match(['get','post'],'/about',function(){
-    echo 'get post..';
-});
+//  Route::get('/home',[Home::class,'aboutus']);
+
+// Route::match(['get','post'],'/about',function(){
+//     echo 'get post..';
+// });
 
 // Route::any('/user',function(){
 //     echo 'get or post..';
